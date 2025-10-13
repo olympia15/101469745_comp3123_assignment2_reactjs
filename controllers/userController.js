@@ -1,4 +1,4 @@
-const User = require('../models/userModel');
+const User = require('../models/User');
 
 // POST /api/v1/user/signup
 const signUp = async (req, res) => {

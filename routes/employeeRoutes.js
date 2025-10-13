@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const {
-    createEmployee,
     getAllEmployees,
+    createEmployee,
     getEmployeeById,
-    updateEmployee,
-    deleteEmployee
+    updateEmployeeById,
+    deleteEmployeeById
 } = require('../controllers/employeeController');
 
 // GET /api/v1/emp/employees - get all employees
@@ -18,9 +18,9 @@ router.post('/employees', createEmployee);
 router.get('/employees/:id', getEmployeeById);
 
 // PUT /api/v1/emp/employees/:id - update employee by ID
-router.put('/employees/:id', updateEmployee);
+router.put('/employees/:id', updateEmployeeById);
 
 // DELETE /api/v1/emp/employees/ - delete employee using query param
-router.delete('/employees', deleteEmployee);
+router.delete('/employees', deleteEmployeeById);
 
 module.exports = router;
