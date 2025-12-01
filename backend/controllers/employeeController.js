@@ -22,7 +22,7 @@ const getAllEmployees = async (req, res) => {
         console.error("Error fetching employees:", error);
         res.status(500).json({
             status: "false",
-            message: error.message || "Error fetching employees"
+            message: error.message || "Error fetching employees."
         });
     }
 };
@@ -38,7 +38,7 @@ const createEmployee = async (req, res) => {
         if (existingEmployee) {
             return res.status(400).json({
                 status: "false",
-                message: "Employee already exists with this email"
+                message: "Employee already exists with this email."
             });
         }
 
@@ -47,7 +47,7 @@ const createEmployee = async (req, res) => {
         await employee.save();
 
         res.status(201).json({
-            message: "Employee created successfully",
+            message: "Employee created successfully.",
             employee_id: employee._id
         });
 
@@ -55,7 +55,7 @@ const createEmployee = async (req, res) => {
         console.error("Error creating employee:", error);
         res.status(500).json({
             status: "false",
-            message: error.message || "Error creating employee"
+            message: error.message || "Error creating employee."
         });
     }
 };
@@ -69,7 +69,7 @@ const getEmployeeById = async (req, res) => {
         if (!employee) {
             return res.status(404).json({
                 status: "false",
-                message: "Employee not found"
+                message: "Employee not found."
             });
         }
 
@@ -88,7 +88,7 @@ const getEmployeeById = async (req, res) => {
         console.error("Error fetching employee:", error);
         res.status(500).json({
             status: "false",
-            message: error.message || "Error fetching employee"
+            message: error.message || "Error fetching employee."
         });
     }
 };
@@ -104,12 +104,12 @@ const updateEmployeeById = async (req, res) => {
         if (!employee) {
             return res.status(404).json({
                 status: "false",
-                message: "Employee not found"
+                message: "Employee not found."
             });
         }
 
         res.status(200).json({
-            message: "Employee updated successfully",
+            message: "Employee updated successfully.",
             employee_id: employee._id
         });
 
@@ -117,7 +117,7 @@ const updateEmployeeById = async (req, res) => {
         console.error("Error updating employee:", error);
         res.status(500).json({
             status: "false",
-            message: error.message || "Error updating employee"
+            message: error.message || "Error updating employee."
         });
     }
 };
@@ -130,7 +130,7 @@ const deleteEmployeeById = async (req, res) => {
         if (!id) {
             return res.status(400).json({
                 status: "false",
-                message: "Employee ID is required"
+                message: "Employee ID is required."
             });
         }
 
@@ -139,7 +139,7 @@ const deleteEmployeeById = async (req, res) => {
         if (!employee) {
             return res.status(404).json({
                 status: "false",
-                message: "Employee not found"
+                message: "Employee not found."
             });
         }
 
@@ -149,7 +149,45 @@ const deleteEmployeeById = async (req, res) => {
         console.error("Error deleting employee:", error);
         res.status(500).json({
             status: "false",
-            message: error.message || "Error deleting employee"
+            message: error.message || "Error deleting employee."
+        });
+    }
+};
+
+const searchEmployees = async (req, res) => {
+    try{
+        const {department, position} = req.query;
+
+        let searchQuery = {};
+
+        if(department){
+            searchQuery.department = { $regex: department, $options: 'i' }; // case-insensitive
+        }
+
+        if(position){
+            searchQuery.position = { $regex: position, $options: 'i' }; // case-insensitive
+        }
+
+        const employees = await Employee.find(searchQuery);
+
+        const formattedEmployees = employees.map(emp => ({
+            employee_id: emp._id,
+            firstName: emp.firstName,
+            lastName: emp.lastName,
+            email: emp.email,
+            position: emp.position,
+            salary: emp.salary,
+            hireDate: emp.hireDate,
+            department: emp.department
+        }));
+
+        res.status(200).json(formattedEmployees);
+
+    } catch (error){
+        console.error("Error searching employees:", error);
+        res.status(500).json({
+            status: "false",
+            message: error.message || "Error searching employees."
         });
     }
 };
@@ -159,5 +197,6 @@ module.exports = {
     createEmployee,
     getEmployeeById,
     updateEmployeeById,
-    deleteEmployeeById
+    deleteEmployeeById,
+    searchEmployees
 };
