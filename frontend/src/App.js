@@ -5,7 +5,7 @@ import Signup from './components/Signup';
 import EmployeeList from './components/EmployeeList';
 import AddEmployee from './components/AddEmployee';
 import EditEmployee from './components/EditEmployee';
-import ViewEmployee from './components/ViewEmployee';
+import ViewEmployee from './components/ViewEmployees';
 import PrivateRoute from './components/PrivateRoute';
 import './App.css';
 
