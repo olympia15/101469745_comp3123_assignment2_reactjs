@@ -5,7 +5,7 @@ const signUp = async (req, res) => {
     try {
         const { username, email, password } = req.body;
 
-        // basic validation
+        // field validation
         if (!username || !email || !password) {
             return res.status(400).json({
                 status: "false",
@@ -47,6 +47,14 @@ const signUp = async (req, res) => {
 const login = async (req, res) => {
     try {
         const { email, password } = req.body;
+
+        // field validation
+        if (!email || !password) {
+            return res.status(400).json({
+                status: "false",
+                message: "Email and password are required."
+            });
+        }
 
         // find user by email or username
         const user = await User.findOne({
