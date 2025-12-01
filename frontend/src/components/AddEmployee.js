@@ -91,7 +91,7 @@ function AddEmployee() {
         <form onSubmit={handleSubmit}>
           <div className="form-row">
             <div className="form-group">
-              <label htmlFor="firstName">First Name *</label>
+              <label htmlFor="firstName">First Name</label>
               <input
                 type="text"
                 id="firstName"
@@ -103,7 +103,7 @@ function AddEmployee() {
             </div>
 
             <div className="form-group">
-              <label htmlFor="lastName">Last Name *</label>
+              <label htmlFor="lastName">Last Name</label>
               <input
                 type="text"
                 id="lastName"
@@ -116,7 +116,7 @@ function AddEmployee() {
           </div>
 
           <div className="form-group">
-            <label htmlFor="email">Email *</label>
+            <label htmlFor="email">Email</label>
             <input
               type="email"
               id="email"
@@ -129,7 +129,7 @@ function AddEmployee() {
 
           <div className="form-row">
             <div className="form-group">
-              <label htmlFor="position">Position *</label>
+              <label htmlFor="position">Position</label>
               <input
                 type="text"
                 id="position"
@@ -141,7 +141,7 @@ function AddEmployee() {
             </div>
 
             <div className="form-group">
-              <label htmlFor="department">Department *</label>
+              <label htmlFor="department">Department</label>
               <input
                 type="text"
                 id="department"
@@ -155,7 +155,7 @@ function AddEmployee() {
 
           <div className="form-row">
             <div className="form-group">
-              <label htmlFor="salary">Salary *</label>
+              <label htmlFor="salary">Salary</label>
               <input
                 type="number"
                 id="salary"
@@ -168,7 +168,7 @@ function AddEmployee() {
             </div>
 
             <div className="form-group">
-              <label htmlFor="hireDate">Hire Date *</label>
+              <label htmlFor="hireDate">Hire Date</label>
               <input
                 type="date"
                 id="hireDate"
