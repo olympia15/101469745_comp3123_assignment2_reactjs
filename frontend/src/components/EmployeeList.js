@@ -193,7 +193,6 @@ function EmployeeList(){
       </div>
     </div>
   );
-
 };
 
 export default EmployeeList;
