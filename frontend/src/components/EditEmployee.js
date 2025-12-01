@@ -113,7 +113,7 @@ function EditEmployee() {
     };
 
     if (fetchLoading) {
-        return <div className='error-message'>Loading employee data...</div>;
+        return <div className='loading'>Loading employee data...</div>;
     }
 
     return (
