@@ -154,6 +154,7 @@ const deleteEmployeeById = async (req, res) => {
     }
 };
 
+// GET /api/v1/emp/employees/search - search employees by department or position
 const searchEmployees = async (req, res) => {
     try{
         const {department, position} = req.query;
