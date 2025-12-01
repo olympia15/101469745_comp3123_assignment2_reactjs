@@ -1,7 +1,7 @@
 {
-  "name": "101469745_assignment02",
+  "name": "employee_management_backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "Employee Management System Backend",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -12,7 +12,7 @@
     "type": "git",
     "url": "git+https://github.com/olympia15/COMP3123-assignment01.git"
   },
-  "keywords": [],
+  "keywords": ["express", "mongodb", "rest-api"],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
