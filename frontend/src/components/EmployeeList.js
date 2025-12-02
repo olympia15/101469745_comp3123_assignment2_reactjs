@@ -19,9 +19,14 @@ function EmployeeList(){
     // fetch employees on component mount
     useEffect(() => {
 
-        const userData = localStorage
+        const userData = localStorage.getItem('user');
         if (userData) {
-            setUser(JSON.parse(userData));
+          try{
+              setUser(JSON.parse(userData));
+          }catch(err){
+              console.error('Error parsing user data from localStorage:', err);
+              localStorage.removeItem('user'); // remove corrupted data
+          }
         }
 
         fetchEmployees();
@@ -60,7 +65,7 @@ function EmployeeList(){
             if (searchDepartment) params.department = searchDepartment;
             if (searchPosition) params.position = searchPosition;
 
-            const response = await axios.get(`${API_URL}/api/v1/emp/employees/search`, { params });
+            const response = await axios.get(`${API_URL}/api/v1/emp/employees/`, { params });
             setFilteredEmployees(response.data);
         } catch (error) {
             console.error('Error searching employees:', error);
