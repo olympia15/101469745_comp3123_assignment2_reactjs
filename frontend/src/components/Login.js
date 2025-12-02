@@ -42,7 +42,8 @@ function Login() {
         // call the login API
         try {
 
-            const response = await axios.post(`${API_URL}/api/v1/user/login`, formData);
+            const apiUrl = 'http://localhost:3000/api/v1/user/login';
+            const response = await axios.post(apiUrl, formData);
 
             if(response.data.user){
                 localStorage.setItem('user', JSON.stringify(response.data.user));

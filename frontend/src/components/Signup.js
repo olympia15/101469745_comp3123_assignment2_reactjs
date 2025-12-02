@@ -63,7 +63,8 @@ function Signup() {
         try {
 
             const { username, email, password } = formData;
-            await axios.post(`${API_URL}/api/v1/user/signup`, { username, email, password });
+            const apiUrl = 'http://localhost:3000/api/v1/user/signup';
+            const response = await axios.post(apiUrl, { username, email, password });
 
             alert('Signup successful! Please login.');
             navigate('/login');
