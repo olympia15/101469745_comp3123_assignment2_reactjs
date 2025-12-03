@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './EmployeeList.css';
 
-const API_URL = 'http://localhost:3000/';
+const API_URL = 'http://localhost:3000';
 
 function EmployeeList(){
 
@@ -65,7 +65,7 @@ function EmployeeList(){
             if (searchDepartment) params.department = searchDepartment;
             if (searchPosition) params.position = searchPosition;
 
-            const response = await axios.get(`${API_URL}/api/v1/emp/employees/`, { params });
+            const response = await axios.get(`${API_URL}/api/v1/emp/employees/search`, { params });
             setFilteredEmployees(response.data);
         } catch (error) {
             console.error('Error searching employees:', error);
