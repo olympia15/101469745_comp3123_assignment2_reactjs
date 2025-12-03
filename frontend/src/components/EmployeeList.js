@@ -87,7 +87,7 @@ function EmployeeList(){
             
             // make API call to delete employee
             try {
-                await axios.delete(`${API_URL}/api/v1/emp/employees/${id}`);
+                await axios.delete(`${API_URL}/api/v1/emp/employees?id=${id}`);
                 fetchEmployees();
             } catch (error) {
                 console.error('Error deleting employee:', error);
